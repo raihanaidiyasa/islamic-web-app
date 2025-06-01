@@ -1,57 +1,207 @@
 /* app/khutbah/khutbah.module.css */
 
-.accordionButton {
-  background-color: #4A5568; /* Abu-abu gelap (contoh dari palet Tailwind) */
-  color: #F7FAFC; /* Putih keabu-abuan */
-  padding: 15px;
+/* Gaya Halaman Utama */
+.pageContainerKhutbah { /* Ubah nama agar tidak konflik jika ada .pageContainer lain */
   width: 100%;
-  text-align: left;
-  border: 1px solid #2D3748; /* Border lebih gelap */
-  border-radius: 0; /* Hilangkan radius jika pembungkus sudah punya */
-  outline: none;
-  cursor: pointer;
-  display: flex; /* Untuk mengatur judul dan panah */
-  justify-content: space-between; /* Untuk mengatur judul dan panah */
-  align-items: center; /* Untuk mengatur judul dan panah */
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #121212;
+  color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.accordionButton:hover {
-  background-color: #2D3748; /* Lebih gelap saat hover */
+.pageTitleKhutbah { /* Ubah nama */
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  text-align: center;
 }
 
-.accordionContent {
+.carouselIntro {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #cccccc;
+  text-align: center;
+}
+
+/* Gaya Carousel Sederhana */
+.carouselContainer {
+  width: 100%;
+  max-width: 900px; /* Atau sesuaikan dengan kebutuhan */
+  overflow-x: auto; /* Memungkinkan scroll horizontal */
+  padding-bottom: 20px; /* Ruang untuk scrollbar agar tidak menutupi konten */
+  margin-bottom: 2rem;
+}
+
+.carouselTrack {
+  display: flex; /* Menyusun item secara horizontal */
+  flex-direction: row;
+  gap: 16px; /* Jarak antar item */
+  padding-left: 10px; /* Sedikit padding di awal */
+  padding-right: 10px; /* Sedikit padding di akhir */
+}
+
+.carouselItem {
+  flex: 0 0 auto; /* Mencegah item menyusut/melebar, ukuran sesuai konten */
+  width: 220px; /* Lebar setiap item carousel */
+  height: 150px; /* Tinggi setiap item carousel */
+  background-color: #282828;
+  border: 1px solid #333;
+  border-radius: 12px; /* Sudut membulat */
   padding: 15px;
-  background-color: #2D3748; /* Background gelap untuk area konten */
-  color: #E2E8F0; /* Teks terang */
-  border-top: 1px solid #4A5568; /* Garis pemisah jika perlu */
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Mendorong preview ke bawah jika judul pendek */
 }
 
-.arabicText {
+.carouselItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.carouselItemTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.carouselItemPreview {
+  font-size: 0.85rem;
+  color: #b0b0b0;
+  line-height: 1.4;
+  /* Batasi jumlah baris jika perlu dengan webkit-line-clamp (membutuhkan display webkit-box) */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Tampilkan maksimal 3 baris */
+  -webkit-box-orient: vertical;
+}
+
+
+/* Gaya Modal Card */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Overlay gelap transparan */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Pastikan di atas konten lain */
+  padding: 20px;
+}
+
+.modalCard {
+  background-color: #222; /* Warna dasar card, sedikit lebih gelap dari visualisasi AI */
+  color: #e0e0e0;
+  padding: 25px 30px; /* Padding lebih besar */
+  border-radius: 16px; /* Sudut yang lebih membulat */
+  width: 100%;
+  max-width: 700px; /* Lebar maksimal card */
+  max-height: 90vh; /* Tinggi maksimal card, sisakan ruang */
+  overflow-y: auto; /* Scroll jika konten panjang */
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  /* Untuk bentuk seperti visualisasi AI (dengan lekukan) sangat kompleks dengan CSS murni,
+     biasanya membutuhkan SVG atau elemen pseudo yang rumit.
+     Kita fokus pada bentuk dasar yang elegan dulu. */
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 2rem; /* Ukuran 'X' lebih besar */
+  cursor: pointer;
+  line-height: 1;
+  padding: 5px;
+}
+.closeButton:hover {
+  color: #fff;
+}
+
+.modalTitle {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 20px;
+  padding-right: 30px; /* Ruang agar tidak tertutup tombol close */
+}
+
+.modalContent {
+  margin-bottom: 25px;
+}
+
+.normalTextModal {
+  line-height: 1.7;
+  color: #cccccc;
+  font-size: 1rem;
   white-space: pre-line;
-  text-align: right;
+}
+
+.arabicTextModal {
   direction: rtl;
-  font-size: 1.2rem;
-  line-height: 2;
-  color: #E2E8F0; /* Pastikan teks Arab juga terang */
+  text-align: right;
+  font-size: 1.4rem;
+  line-height: 2.3;
+  color: #e0e0e0;
+  font-family: 'Noto Naskh Arabic', Arial, sans-serif;
+  white-space: pre-line;
 }
 
-/* Anda bisa menambahkan gaya untuk panah juga */
-.arrowUp, .arrowDown {
-  color: #A0AEC0; /* Warna panah */
+.modalActions {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Jarak antara tombol dan pesan */
 }
 
-/* Contoh untuk styling Rukun Khutbah */
-.rukunContainer {
-  background-color: #1A202C; /* Background sangat gelap untuk bagian ini */
-  color: #CBD5E0; /* Teks lebih lembut */
-  border: 1px solid #2D3748;
-  border-radius: 0.5rem; /* Rounded corners */
+.copyButtonModal {
+  background-color: #333; /* Tombol salin lebih gelap, sesuai visualisasi */
+  color: #f0f0f0;
+  border: 1px solid #555;
+  padding: 10px 18px;
+  border-radius: 20px; /* Tombol lebih membulat (pill shape) */
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.rukunTitle {
-  color: #E2E8F0; /* Teks judul lebih terang */
+.copyButtonModal:hover {
+  background-color: #444;
+  border-color: #666;
 }
 
-.rukunList {
-  /* Gaya khusus untuk list jika perlu */
+.copySuccessMessageModal {
+  font-size: 0.9rem;
+  color: #4caf50; /* Hijau untuk pesan sukses */
+}
+
+/* Scrollbar styling (opsional, untuk tampilan lebih konsisten) */
+.modalCard::-webkit-scrollbar, .carouselContainer::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.modalCard::-webkit-scrollbar-track, .carouselContainer::-webkit-scrollbar-track {
+  background: #222;
+  border-radius: 10px;
+}
+.modalCard::-webkit-scrollbar-thumb, .carouselContainer::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 10px;
+  border: 2px solid #222;
+}
+.modalCard::-webkit-scrollbar-thumb:hover, .carouselContainer::-webkit-scrollbar-thumb:hover {
+  background-color: #777;
 }
