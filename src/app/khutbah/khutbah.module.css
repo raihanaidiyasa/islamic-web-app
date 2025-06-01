@@ -1,0 +1,57 @@
+/* app/khutbah/khutbah.module.css */
+
+.accordionButton {
+  background-color: #4A5568; /* Abu-abu gelap (contoh dari palet Tailwind) */
+  color: #F7FAFC; /* Putih keabu-abuan */
+  padding: 15px;
+  width: 100%;
+  text-align: left;
+  border: 1px solid #2D3748; /* Border lebih gelap */
+  border-radius: 0; /* Hilangkan radius jika pembungkus sudah punya */
+  outline: none;
+  cursor: pointer;
+  display: flex; /* Untuk mengatur judul dan panah */
+  justify-content: space-between; /* Untuk mengatur judul dan panah */
+  align-items: center; /* Untuk mengatur judul dan panah */
+}
+
+.accordionButton:hover {
+  background-color: #2D3748; /* Lebih gelap saat hover */
+}
+
+.accordionContent {
+  padding: 15px;
+  background-color: #2D3748; /* Background gelap untuk area konten */
+  color: #E2E8F0; /* Teks terang */
+  border-top: 1px solid #4A5568; /* Garis pemisah jika perlu */
+}
+
+.arabicText {
+  white-space: pre-line;
+  text-align: right;
+  direction: rtl;
+  font-size: 1.2rem;
+  line-height: 2;
+  color: #E2E8F0; /* Pastikan teks Arab juga terang */
+}
+
+/* Anda bisa menambahkan gaya untuk panah juga */
+.arrowUp, .arrowDown {
+  color: #A0AEC0; /* Warna panah */
+}
+
+/* Contoh untuk styling Rukun Khutbah */
+.rukunContainer {
+  background-color: #1A202C; /* Background sangat gelap untuk bagian ini */
+  color: #CBD5E0; /* Teks lebih lembut */
+  border: 1px solid #2D3748;
+  border-radius: 0.5rem; /* Rounded corners */
+}
+
+.rukunTitle {
+  color: #E2E8F0; /* Teks judul lebih terang */
+}
+
+.rukunList {
+  /* Gaya khusus untuk list jika perlu */
+}
