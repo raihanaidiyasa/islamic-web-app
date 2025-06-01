@@ -1,207 +1,231 @@
-/* app/khutbah/khutbah.module.css */
+/* app/khutbah/khutbah.module.css (ROMBAK TOTAL) */
 
-/* Gaya Halaman Utama */
-.pageContainerKhutbah { /* Ubah nama agar tidak konflik jika ada .pageContainer lain */
-  width: 100%;
+.pageWrapper {
+  display: flex; /* Untuk layout utama, jika ingin ada sidebar gambar nantinya */
+  background-color: #1E1E1E; /* Warna latar belakang gelap seperti di screenshot dokumen */
+  color: #E0E0E0; /* Warna teks terang */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   min-height: 100vh;
-  padding: 20px;
-  background-color: #121212;
-  color: #e0e0e0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 0; /* Reset padding default jika ada */
 }
 
-.pageTitleKhutbah { /* Ubah nama */
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-  color: #ffffff;
-  text-align: center;
+.mainContentArea {
+  flex-grow: 1; /* Konten utama mengambil ruang yang tersedia */
+  /* Jika ingin ada batas lebar maksimal untuk konten seperti di dokumen: */
+  max-width: 800px; /* Sesuaikan lebar ini */
+  margin: 0 auto; /* Pusatkan jika ada max-width */
+  padding: 40px 30px; /* Padding untuk konten */
+  box-sizing: border-box;
 }
 
-.carouselIntro {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: #cccccc;
-  text-align: center;
+/* Opsional: Jika Anda ingin menambahkan gambar di sisi kanan seperti di screenshot dokumen */
+/*
+.sideImageContainer {
+  width: 35%; // Atau persentase lain
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
 }
-
-/* Gaya Carousel Sederhana */
-.carouselContainer {
+.sideImageContainer img {
   width: 100%;
-  max-width: 900px; /* Atau sesuaikan dengan kebutuhan */
-  overflow-x: auto; /* Memungkinkan scroll horizontal */
-  padding-bottom: 20px; /* Ruang untuk scrollbar agar tidak menutupi konten */
-  margin-bottom: 2rem;
+  height: 100%;
+  object-fit: cover;
+}
+*/
+
+.pageHeader h1 {
+  font-size: 2.5rem; /* Ukuran judul utama */
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #444; /* Garis bawah tipis seperti di dokumen */
+  padding-bottom: 16px;
 }
 
-.carouselTrack {
-  display: flex; /* Menyusun item secara horizontal */
-  flex-direction: row;
-  gap: 16px; /* Jarak antar item */
-  padding-left: 10px; /* Sedikit padding di awal */
-  padding-right: 10px; /* Sedikit padding di akhir */
+.articleBody .introText {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  color: #C0C0C0; /* Warna teks intro sedikit lebih redup */
 }
 
-.carouselItem {
-  flex: 0 0 auto; /* Mencegah item menyusut/melebar, ukuran sesuai konten */
-  width: 220px; /* Lebar setiap item carousel */
-  height: 150px; /* Tinggi setiap item carousel */
-  background-color: #282828;
-  border: 1px solid #333;
-  border-radius: 12px; /* Sudut membulat */
-  padding: 15px;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+.mainQuote {
+  background-color: #2a2a2a; /* Latar quote sedikit berbeda */
+  border-left: 4px solid #007AFF; /* Warna aksen border kiri (biru contoh) */
+  padding: 16px 20px;
+  margin: 24px 0;
+  border-radius: 4px;
+}
+.mainQuote p {
+  font-style: italic;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: #D0D0D0;
+}
+.mainQuote footer {
+  font-size: 0.85rem;
+  color: #888;
+  text-align: right;
+}
+
+.sectionsContainer {
+  margin-top: 32px;
+}
+
+.expandableSection {
+  margin-bottom: 8px; /* Jarak antar section */
+  border-radius: 6px;
+  /* background-color: #252525; // Jika ingin latar belakang berbeda untuk section */
+  /* overflow: hidden; // Jika ada border-radius dan konten menonjol */
+}
+
+.sectionHeader {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Mendorong preview ke bawah jika judul pendek */
-}
-
-.carouselItem:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-
-.carouselItemTitle {
-  font-size: 1.1rem;
+  align-items: center;
+  width: 100%;
+  padding: 12px 8px; /* Padding tombol header */
+  background-color: transparent; /* Atau warna header jika berbeda */
+  border: none;
+  /* border-bottom: 1px solid #383838; // Garis bawah antar header jika tidak ada background */
+  color: #E0E0E0;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1.15rem; /* Ukuran font judul section */
   font-weight: 600;
-  color: #ffffff;
+  transition: background-color 0.2s ease;
+}
+.sectionHeader:hover {
+  background-color: #333333; /* Warna hover header */
+  border-radius: 4px;
+}
+
+.sectionTitleNumber {
+  margin-right: 8px;
+  font-weight: normal;
+  color: #AAAAAA;
+}
+.sectionTitleText {
+  flex-grow: 1;
+}
+.expandIcon {
+  margin-left: 12px;
+  font-size: 0.9em;
+  transition: transform 0.2s ease-in-out;
+}
+.sectionHeader[aria-expanded="true"] .expandIcon {
+  transform: rotate(90deg);
+}
+
+.sectionContent {
+  background-color: #222222;
+  border-radius: 0 0 6px 6px;
+  overflow: hidden; /* Penting untuk transisi max-height */
+  max-height: 0; /* Default tertutup */
+  opacity: 0; /* Default transparan */
+  /* BARU: Transisi untuk max-height, opacity, dan padding */
+  transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, padding-top 0.4s ease-in-out, padding-bottom 0.4s ease-in-out;
+  padding-left: 30px; /* Indentasi horizontal tetap */
+  padding-right: 16px; /* Padding kanan tetap */
+  padding-top: 0; /* Padding vertikal awal saat tertutup */
+  padding-bottom: 0; /* Padding vertikal awal saat tertutup */
+  /* Hapus animasi keyframe lama */
+  /* animation: fadeIn 0.3s ease-out; */
+  border-top: 1px dashed transparent; /* BARU: Border awal transparan */
+}
+
+.sectionContentOpen {
+  max-height: 1500px; /* BARU: Nilai yang cukup besar untuk menampung konten terpanjang, sesuaikan jika perlu */
+  opacity: 1;
+  padding-top: 16px; /* BARU: Padding vertikal saat terbuka */
+  padding-bottom: 16px; /* BARU: Padding vertikal saat terbuka */
+  border-top-color: #444; /* BARU: Border muncul saat terbuka */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sectionDescription {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: #B0B0B0;
+  font-style: italic;
+}
+
+.pointList {
+  list-style-type: disc; /* Atau 'circle', atau custom dengan pseudo-elements */
+  margin-left: 20px; /* Indentasi untuk list */
+  margin-bottom: 16px;
+}
+.pointItem {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  line-height: 1.6;
+  color: #C8C8C8;
+}
+
+.dalilContainer, .contohContainer {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background-color: #282828; /* Latar untuk blok dalil/contoh */
+  border-radius: 4px;
+  border-left: 3px solid #555;
+}
+.subSectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #D0D0D0;
   margin-bottom: 8px;
 }
-
-.carouselItemPreview {
+.contohDescription {
   font-size: 0.85rem;
-  color: #b0b0b0;
-  line-height: 1.4;
-  /* Batasi jumlah baris jika perlu dengan webkit-line-clamp (membutuhkan display webkit-box) */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* Tampilkan maksimal 3 baris */
-  -webkit-box-orient: vertical;
+  color: #999;
+  margin-bottom: 8px;
+  font-style: italic;
 }
 
-
-/* Gaya Modal Card */
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Overlay gelap transparan */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000; /* Pastikan di atas konten lain */
-  padding: 20px;
-}
-
-.modalCard {
-  background-color: #222; /* Warna dasar card, sedikit lebih gelap dari visualisasi AI */
-  color: #e0e0e0;
-  padding: 25px 30px; /* Padding lebih besar */
-  border-radius: 16px; /* Sudut yang lebih membulat */
-  width: 100%;
-  max-width: 700px; /* Lebar maksimal card */
-  max-height: 90vh; /* Tinggi maksimal card, sisakan ruang */
-  overflow-y: auto; /* Scroll jika konten panjang */
-  position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  /* Untuk bentuk seperti visualisasi AI (dengan lekukan) sangat kompleks dengan CSS murni,
-     biasanya membutuhkan SVG atau elemen pseudo yang rumit.
-     Kita fokus pada bentuk dasar yang elegan dulu. */
-}
-
-.closeButton {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: none;
-  border: none;
-  color: #aaa;
-  font-size: 2rem; /* Ukuran 'X' lebih besar */
-  cursor: pointer;
-  line-height: 1;
-  padding: 5px;
-}
-.closeButton:hover {
-  color: #fff;
-}
-
-.modalTitle {
-  font-size: 1.7rem;
-  font-weight: bold;
-  color: #ffffff;
-  margin-bottom: 20px;
-  padding-right: 30px; /* Ruang agar tidak tertutup tombol close */
-}
-
-.modalContent {
-  margin-bottom: 25px;
-}
-
-.normalTextModal {
+.actualText {
+  font-size: 0.95rem;
   line-height: 1.7;
-  color: #cccccc;
-  font-size: 1rem;
-  white-space: pre-line;
+  color: #C0C0C0;
+  white-space: pre-line; /* Untuk menjaga baris baru dari string template literal */
 }
-
-.arabicTextModal {
+.arabicText {
   direction: rtl;
   text-align: right;
-  font-size: 1.4rem;
-  line-height: 2.3;
-  color: #e0e0e0;
-  font-family: 'Noto Naskh Arabic', Arial, sans-serif;
-  white-space: pre-line;
+  font-family: 'Noto Naskh Arabic', 'Times New Roman', serif; /* Pastikan font Arab diimpor */
+  font-size: 1.3rem; /* Ukuran lebih besar untuk teks Arab */
+  line-height: 2.2; /* Spasi baris lebih lega */
+  color: #E0E0E0;
 }
 
-.modalActions {
-  display: flex;
-  align-items: center;
-  gap: 15px; /* Jarak antara tombol dan pesan */
+.footerSection {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #444;
 }
-
-.copyButtonModal {
-  background-color: #333; /* Tombol salin lebih gelap, sesuai visualisasi */
-  color: #f0f0f0;
-  border: 1px solid #555;
-  padding: 10px 18px;
-  border-radius: 20px; /* Tombol lebih membulat (pill shape) */
-  cursor: pointer;
+.footerTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #FFFFFF;
+}
+.footerSection p {
   font-size: 0.9rem;
-  font-weight: 500;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  color: #B0B0B0;
+  line-height: 1.6;
 }
 
-.copyButtonModal:hover {
-  background-color: #444;
-  border-color: #666;
+.pageFooter {
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #333;
+  text-align: center;
 }
-
-.copySuccessMessageModal {
-  font-size: 0.9rem;
-  color: #4caf50; /* Hijau untuk pesan sukses */
-}
-
-/* Scrollbar styling (opsional, untuk tampilan lebih konsisten) */
-.modalCard::-webkit-scrollbar, .carouselContainer::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-.modalCard::-webkit-scrollbar-track, .carouselContainer::-webkit-scrollbar-track {
-  background: #222;
-  border-radius: 10px;
-}
-.modalCard::-webkit-scrollbar-thumb, .carouselContainer::-webkit-scrollbar-thumb {
-  background-color: #555;
-  border-radius: 10px;
-  border: 2px solid #222;
-}
-.modalCard::-webkit-scrollbar-thumb:hover, .carouselContainer::-webkit-scrollbar-thumb:hover {
-  background-color: #777;
+.pageFooter p {
+  font-size: 0.8rem;
+  color: #777;
 }
