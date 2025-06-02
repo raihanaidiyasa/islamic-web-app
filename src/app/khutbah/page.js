@@ -17,7 +17,7 @@ function ExpandableSection({ titleNumber, title, children }) {
       >
         <span className={styles.sectionTitleNumber}>{titleNumber}</span>
         <span className={styles.sectionTitleText}>{title}</span>
-        <span className={styles.expandIcon}>{isOpen ? '▼' : '►'}</span>
+        <span className={styles.expandIcon}></span>
       </button>
       {/* BARU: Konten selalu dirender, visibilitas dikontrol oleh CSS dan kelas dinamis */}
       <div
