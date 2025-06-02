@@ -84,7 +84,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 12px 8px; /* Padding tombol header */
+  padding: 12px 12px 12px 8px; /* Padding tombol header */
   background-color: transparent; /* Atau warna header jika berbeda */
   border: none;
   /* border-bottom: 1px solid #383838; // Garis bawah antar header jika tidak ada background */
@@ -107,14 +107,26 @@
 }
 .sectionTitleText {
   flex-grow: 1;
+  margin-right: 8px;
 }
 .expandIcon {
-  margin-left: 12px;
-  font-size: 0.9em;
-  transition: transform 0.2s ease-in-out;
+  margin-left: auto;
+  width: 8px; /* Lebar dasar chevron */
+  height: 8px; /* Tinggi dasar chevron */
+  border-style: solid;
+  border-color: #AAAAAA; /* Warna ikon default */
+  /* BARU: Membuat bentuk V (panah bawah) dengan border */
+  /* Hanya border kanan dan bawah yang diberi warna, sisanya transparan */
+  border-width: 0 2px 2px 0; /* Atas Kanan Bawah Kiri - Ketebalan border untuk V */
+  display: inline-block;
+  padding: 0; /* Pastikan tidak ada padding internal */
+  transform: rotate(45deg); /* Awalnya bentuk V (panah ke bawah) */
+  transition: transform 0.3s ease-in-out, border-color 0.3s ease;
+  flex-shrink: 0;
 }
 .sectionHeader[aria-expanded="true"] .expandIcon {
-  transform: rotate(90deg);
+  transform: rotate(-135deg); /* Memutar V menjadi panah ke atas */
+  border-color: #E0E0E0;
 }
 
 .sectionContent {
