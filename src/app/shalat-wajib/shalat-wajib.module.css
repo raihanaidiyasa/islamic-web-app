@@ -1,0 +1,223 @@
+.pageContainer {
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.heroSection {
+    position: relative;
+    text-align: center;
+    padding: 6rem 2rem;
+    background-image: url('https://images.unsplash.com/photo-1584267385494-9fdd9a71ad75?fit=crop&w=1500&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+}
+
+.heroContent h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.heroContent p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+.mainContent {
+    max-width: 960px;
+    margin: -3rem auto 0;
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+    background-color: #121212;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.section {
+    margin-bottom: 4rem;
+}
+
+.section h2 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #00bcd4; /* Accent color */
+    margin-bottom: 0.5rem;
+}
+
+.sectionDescription {
+    color: #b0b0b0;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.niatGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.niatCard {
+    background-color: #1e1e1e;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-bottom: 4px solid #00bcd4;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.niatCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 188, 212, 0.1);
+}
+
+.niatCard h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.arabicText {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 1.6rem;
+    text-align: right;
+    direction: rtl;
+    line-height: 2.4;
+    color: #e0e0e0;
+}
+
+.bacaanArabic {
+    font-size: 1.8rem;
+    line-height: 2.6;
+}
+
+.latinText {
+    font-style: italic;
+    color: #9e9e9e;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+.translation {
+    color: #bdbdbd;
+    font-size: 1rem;
+    margin-top: 1rem;
+    border-left: 3px solid #00bcd4;
+    padding-left: 1rem;
+    font-style: italic;
+}
+
+.stepDescription {
+    color: #c0c0c0;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.accordionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.accordionItem {
+    border: 1px solid #333;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+.accordionItem:has([aria-expanded="true"]) {
+    background-color: #1a1a1a;
+    border-color: #00bcd4;
+}
+
+.accordionHeader {
+    background: transparent;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: none;
+    text-align: left;
+    color: #fafafa;
+    font-size: 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.accordionNumber {
+    background-color: #00bcd4;
+    color: #121212;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.accordionTitle {
+    flex-grow: 1;
+}
+
+.accordionIcon {
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid #fafafa;
+    border-bottom: 2px solid #fafafa;
+    transform: rotate(45deg);
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    flex-shrink: 0;
+}
+
+.accordionIcon.open {
+    transform: rotate(225deg);
+}
+
+.accordionCollapse {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease-out;
+}
+
+.accordionCollapse.show {
+    grid-template-rows: 1fr;
+}
+
+.accordionBody {
+    overflow: hidden;
+}
+
+.accordionBody > div {
+    padding: 1.5rem;
+}
+
+.bacaan {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: #0a0a0a;
+    border-radius: 6px;
+}
