@@ -1,0 +1,263 @@
+/* app/khutbah/khutbah.module.css (ROMBAK TOTAL) */
+
+.pageWrapper {
+  display: flex; /* Untuk layout utama, jika ingin ada sidebar gambar nantinya */
+  background-color: #1e1e1e; /* Warna latar belakang gelap seperti di screenshot dokumen */
+  color: #e0e0e0; /* Warna teks terang */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  min-height: 100vh;
+  padding: 0; /* Reset padding default jika ada */
+}
+
+.mainContentArea {
+  flex-grow: 1; /* Konten utama mengambil ruang yang tersedia */
+  /* Jika ingin ada batas lebar maksimal untuk konten seperti di dokumen: */
+  max-width: 800px; /* Sesuaikan lebar ini */
+  margin: 0 auto; /* Pusatkan jika ada max-width */
+  padding: 40px 30px; /* Padding untuk konten */
+  box-sizing: border-box;
+}
+
+/* Opsional: Jika Anda ingin menambahkan gambar di sisi kanan seperti di screenshot dokumen */
+/*
+.sideImageContainer {
+  width: 35%; // Atau persentase lain
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.sideImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+*/
+
+.pageHeader h1 {
+  font-size: 2.5rem; /* Ukuran judul utama */
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #444; /* Garis bawah tipis seperti di dokumen */
+  padding-bottom: 16px;
+}
+
+.articleBody .introText {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  color: #c0c0c0; /* Warna teks intro sedikit lebih redup */
+}
+
+.mainQuote {
+  background-color: #2a2a2a; /* Latar quote sedikit berbeda */
+  border-left: 4px solid #007aff; /* Warna aksen border kiri (biru contoh) */
+  padding: 16px 20px;
+  margin: 24px 0;
+  border-radius: 4px;
+}
+.mainQuote p {
+  font-style: italic;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: #d0d0d0;
+}
+.mainQuote footer {
+  font-size: 0.85rem;
+  color: #888;
+  text-align: right;
+}
+
+.sectionsContainer {
+  margin-top: 32px;
+}
+
+.expandableSection {
+  margin-bottom: 8px; /* Jarak antar section */
+  border-radius: 6px;
+  /* background-color: #252525; // Jika ingin latar belakang berbeda untuk section */
+  /* overflow: hidden; // Jika ada border-radius dan konten menonjol */
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 12px 12px 8px; /* Padding tombol header */
+  background-color: transparent; /* Atau warna header jika berbeda */
+  border: none;
+  /* border-bottom: 1px solid #383838; // Garis bawah antar header jika tidak ada background */
+  color: #e0e0e0;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1.15rem; /* Ukuran font judul section */
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+.sectionHeader:hover {
+  background-color: #333333; /* Warna hover header */
+  border-radius: 4px;
+}
+
+.sectionTitleNumber {
+  margin-right: 8px;
+  font-weight: normal;
+  color: #aaaaaa;
+}
+.sectionTitleText {
+  flex-grow: 1;
+  margin-right: 8px;
+}
+.expandIcon {
+  margin-left: auto;
+  width: 8px; /* Lebar dasar chevron */
+  height: 8px; /* Tinggi dasar chevron */
+  border-style: solid;
+  border-color: #aaaaaa; /* Warna ikon default */
+  /* BARU: Membuat bentuk V (panah bawah) dengan border */
+  /* Hanya border kanan dan bawah yang diberi warna, sisanya transparan */
+  border-width: 0 2px 2px 0; /* Atas Kanan Bawah Kiri - Ketebalan border untuk V */
+  display: inline-block;
+  padding: 0; /* Pastikan tidak ada padding internal */
+  transform: rotate(45deg); /* Awalnya bentuk V (panah ke bawah) */
+  transition: transform 0.3s ease-in-out, border-color 0.3s ease;
+  flex-shrink: 0;
+}
+.sectionHeader[aria-expanded="true"] .expandIcon {
+  transform: rotate(-135deg); /* Memutar V menjadi panah ke atas */
+  border-color: #e0e0e0;
+}
+
+.sectionContent {
+  background-color: #222222;
+  border-radius: 0 0 6px 6px;
+  overflow: hidden; /* Penting untuk transisi max-height */
+  max-height: 0; /* Default tertutup */
+  opacity: 0; /* Default transparan */
+  /* BARU: Transisi untuk max-height, opacity, dan padding */
+  transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out,
+    padding-top 0.4s ease-in-out, padding-bottom 0.4s ease-in-out;
+  padding-left: 30px; /* Indentasi horizontal tetap */
+  padding-right: 16px; /* Padding kanan tetap */
+  padding-top: 0; /* Padding vertikal awal saat tertutup */
+  padding-bottom: 0; /* Padding vertikal awal saat tertutup */
+  /* Hapus animasi keyframe lama */
+  /* animation: fadeIn 0.3s ease-out; */
+  border-top: 1px dashed transparent; /* BARU: Border awal transparan */
+}
+
+.sectionContentOpen {
+  max-height: 1500px; /* BARU: Nilai yang cukup besar untuk menampung konten terpanjang, sesuaikan jika perlu */
+  opacity: 1;
+  padding-top: 16px; /* BARU: Padding vertikal saat terbuka */
+  padding-bottom: 16px; /* BARU: Padding vertikal saat terbuka */
+  border-top-color: #444; /* BARU: Border muncul saat terbuka */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sectionDescription {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: #b0b0b0;
+  font-style: italic;
+}
+
+.pointList {
+  list-style-type: decimal; /* Atau 'circle', atau custom dengan pseudo-elements */
+  margin-left: 20px; /* Indentasi untuk list */
+  margin-bottom: 16px;
+}
+.pointItem {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  line-height: 1.6;
+  color: #c8c8c8;
+}
+
+.dalilContainer,
+.contohContainer {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background-color: #282828; /* Latar untuk blok dalil/contoh */
+  border-radius: 4px;
+  border-left: 3px solid #555;
+}
+.subSectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #d0d0d0;
+  margin-bottom: 8px;
+}
+.contohDescription {
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.actualText {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #c0c0c0;
+  white-space: pre-line; /* Untuk menjaga baris baru dari string template literal */
+}
+.arabicText {
+  direction: rtl;
+  text-align: right;
+  font-family: "Noto Naskh Arabic", "Times New Roman", serif; /* Pastikan font Arab diimpor */
+  font-size: 1.3rem; /* Ukuran lebih besar untuk teks Arab */
+  line-height: 2.2; /* Spasi baris lebih lega */
+  color: #e0e0e0;
+}
+
+.footerSection {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #444;
+}
+.footerTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+.footerSection p {
+  font-size: 0.9rem;
+  color: #b0b0b0;
+  line-height: 1.6;
+}
+
+.pageFooter {
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #333;
+  text-align: center;
+}
+.pageFooter p {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.paragraphBlock {
+  margin-bottom: 20px;
+}
+
+.paragraphTitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
