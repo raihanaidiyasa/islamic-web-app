@@ -1,4 +1,3 @@
-// app/zakat/zakatContent.js
 
 export const panduanZakat = {
     mainTitle: "Pengertian Zakat, Syarat, dan Jenisnya",
